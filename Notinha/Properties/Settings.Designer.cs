@@ -25,7 +25,7 @@ namespace Notinha.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("AUTO ELÉTRICA CANASSA")]
         public string HEADER {
             get {
                 return ((string)(this["HEADER"]));
@@ -34,7 +34,7 @@ namespace Notinha.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Avenida Primo Meneghetti 805")]
         public string SUBHEADER {
             get {
                 return ((string)(this["SUBHEADER"]));
@@ -43,7 +43,7 @@ namespace Notinha.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Jardim Paulistano - 14402-465")]
         public string SUBHEADER1 {
             get {
                 return ((string)(this["SUBHEADER1"]));
@@ -52,7 +52,7 @@ namespace Notinha.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("(16) 3704-1611")]
         public string SUBHEADER2 {
             get {
                 return ((string)(this["SUBHEADER2"]));

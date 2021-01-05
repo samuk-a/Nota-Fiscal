@@ -3,16 +3,16 @@
   <Profiles />
   <Settings>
     <Setting Name="HEADER" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">AUTO ELÉTRICA CANASSA</Value>
     </Setting>
     <Setting Name="SUBHEADER" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Avenida Primo Meneghetti 805</Value>
     </Setting>
     <Setting Name="SUBHEADER1" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Jardim Paulistano - 14402-465</Value>
     </Setting>
     <Setting Name="SUBHEADER2" Type="System.String" Scope="Application">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">(16) 3704-1611</Value>
     </Setting>
   </Settings>
 </SettingsFile>
