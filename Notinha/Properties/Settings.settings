@@ -6,13 +6,13 @@
       <Value Profile="(Default)">AUTO ELÉTRICA CANASSA</Value>
     </Setting>
     <Setting Name="SUBHEADER" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Avenida Primo Meneghetti 805</Value>
+      <Value Profile="(Default)">Rua José Garcia Gomes 3071</Value>
     </Setting>
     <Setting Name="SUBHEADER1" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Jardim Paulistano - 14402-465</Value>
+      <Value Profile="(Default)">Jardim Palma - 14402-115 - Franca SP</Value>
     </Setting>
     <Setting Name="SUBHEADER2" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">(16) 3704-1611</Value>
+      <Value Profile="(Default)">(16) 99197-5184</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "AE Canassa"
-#define MyAppVersion "1.4"
+#define MyAppVersion "1.6"
 #define MyAppPublisher "Samuel"
 #define MyAppURL "https://aecanassa.com.br"
 #define MyAppExeName "Auto Elétrica Canassa.exe"
@@ -24,7 +24,7 @@ DisableProgramGroupPage=yes
 PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
 OutputDir=C:\Users\Samuel\Documents
-OutputBaseFilename=Setup-v1.4
+OutputBaseFilename=Setup-v16
 SetupIconFile=C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\Resources\eletrica_opps.ico
 Compression=lzma
 SolidCompression=yes

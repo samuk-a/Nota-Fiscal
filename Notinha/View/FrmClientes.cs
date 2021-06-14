@@ -8,6 +8,8 @@ using System.Windows.Forms;
 namespace Notinha.View {
 	public partial class FrmClientes : Form {
 		private bool isNew = false;
+		private bool isExceeded = false;
+
 		public FrmClientes()
 		{
 			InitializeComponent();
@@ -32,7 +34,7 @@ namespace Notinha.View {
 
 		private void GetDetails(Cliente cliente)
 		{
-			txtCpf.Text = cliente.Cpf;
+			txtCpf.Text = cliente.Doc;
 			txtNome.Text = cliente.Nome;
 			txtRazao.Text = cliente.RazSoc;
 			txtEndereco.Text = cliente.Endereco;
@@ -121,7 +123,28 @@ namespace Notinha.View {
 		{
 			clientesTable.Rows.Clear();
 			foreach (Cliente cli in clientes)
-				clientesTable.Rows.Add(cli.Id, cli.Cpf, cli.Nome, cli.RazSoc, cli.Endereco, cli.Bairro, cli.Cidade, cli.Cep, cli.Fone);
+				clientesTable.Rows.Add(cli.Id, cli.Doc, cli.Nome, cli.RazSoc, cli.Endereco, cli.Bairro, cli.Cidade, cli.Cep, cli.Fone);
+		}
+
+		private void txtCpf_TextChanged(object sender, EventArgs e)
+		{
+			if (!isExceeded)
+			{
+				txtCpf.Mask = "000,000,000-00";
+			}
+			Console.WriteLine(txtCpf.Text.Length);
+			isExceeded = txtCpf.Text.Length > 12;
+		}
+
+		private void txtCpf_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (isExceeded)
+			{
+				int offset = txtCpf.Text.Length > 12 ? 4 : 3;
+				txtCpf.Mask = "00,000,000/0000-00";
+				txtCpf.Select(txtCpf.Text.Length + offset, 0);
+			}
+			isExceeded = txtCpf.Text.Length > 10;
 		}
 	}
 }

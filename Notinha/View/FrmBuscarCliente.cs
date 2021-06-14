@@ -71,7 +71,7 @@ namespace Notinha.View {
 		{
 			clientesTable.Rows.Clear();
 			foreach (Cliente cli in clientes)
-				clientesTable.Rows.Add(cli.Id, cli.Cpf, cli.Nome, cli.RazSoc, cli.Endereco, cli.Bairro, cli.Cidade, cli.Cep, cli.Fone);
+				clientesTable.Rows.Add(cli.Id, cli.Doc, cli.Nome, cli.RazSoc, cli.Endereco, cli.Bairro, cli.Cidade, cli.Cep, cli.Fone);
 		}
 
 		private void TxtPesquisa_TextChanged(object sender, EventArgs e)

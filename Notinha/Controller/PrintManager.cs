@@ -103,7 +103,17 @@ namespace Notinha.Controller {
 			Paragraph razSoc = new Paragraph("Raz Soc.:");
 			Paragraph razSocV = new Paragraph(venda.Cliente.RazSoc ?? "").SetBold();
 			Paragraph cpf = new Paragraph("CNPJ/CPF:").SetTextAlignment(TextAlignment.RIGHT);
-			Paragraph cpfV = new Paragraph(Convert.ToUInt64(venda.Cliente.Cpf).ToString(@"000\.000\.000\-00"));
+			ulong cpfLong = Convert.ToUInt64(venda.Cliente.Doc);
+			Paragraph cpfV;
+			if (cpfLong == 0)
+			{
+				cpfV = new Paragraph();
+			}
+			else
+			{
+				cpfV = new Paragraph(cpfLong.ToString(@"000\.000\.000\-00"));
+			}
+			
 			Paragraph fone = new Paragraph("Fone:").SetTextAlignment(TextAlignment.RIGHT);
 			Paragraph foneV;
 			if (venda.Cliente.Fone == null) foneV = new Paragraph();

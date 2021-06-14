@@ -25,11 +25,11 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.lbClientes = new System.Windows.Forms.Label();
 			this.camposBox = new System.Windows.Forms.GroupBox();
 			this.txtFone = new System.Windows.Forms.MaskedTextBox();
@@ -220,6 +220,8 @@
 			this.txtCpf.Size = new System.Drawing.Size(140, 23);
 			this.txtCpf.TabIndex = 1;
 			this.txtCpf.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+			this.txtCpf.TextChanged += new System.EventHandler(this.txtCpf_TextChanged);
+			this.txtCpf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCpf_KeyPress);
 			// 
 			// btnDelete
 			// 
@@ -326,9 +328,9 @@
 			this.lbCod.AutoSize = true;
 			this.lbCod.Location = new System.Drawing.Point(7, 39);
 			this.lbCod.Name = "lbCod";
-			this.lbCod.Size = new System.Drawing.Size(37, 17);
+			this.lbCod.Size = new System.Drawing.Size(78, 17);
 			this.lbCod.TabIndex = 23;
-			this.lbCod.Text = "CPF:";
+			this.lbCod.Text = "CPF/CNPJ:";
 			// 
 			// clientesTable
 			// 
@@ -349,21 +351,21 @@
             this.Cidade,
             this.Cep,
             this.Fone});
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle4.BackColor = System.Drawing.Color.LightSalmon;
-			dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Tomato;
-			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.clientesTable.DefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle24.BackColor = System.Drawing.Color.LightSalmon;
+			dataGridViewCellStyle24.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			dataGridViewCellStyle24.ForeColor = System.Drawing.Color.Black;
+			dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.Tomato;
+			dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.White;
+			dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.clientesTable.DefaultCellStyle = dataGridViewCellStyle24;
 			this.clientesTable.Location = new System.Drawing.Point(372, 64);
 			this.clientesTable.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
 			this.clientesTable.Name = "clientesTable";
 			this.clientesTable.ReadOnly = true;
 			this.clientesTable.RowHeadersVisible = false;
-			dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.clientesTable.RowsDefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle25.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.clientesTable.RowsDefaultCellStyle = dataGridViewCellStyle25;
 			this.clientesTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.clientesTable.Size = new System.Drawing.Size(716, 475);
 			this.clientesTable.TabIndex = 3;
@@ -379,9 +381,9 @@
 			// Cpf
 			// 
 			this.Cpf.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			dataGridViewCellStyle1.Format = "000.000.000-00";
-			dataGridViewCellStyle1.NullValue = null;
-			this.Cpf.DefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle21.Format = "000.000.000-00";
+			dataGridViewCellStyle21.NullValue = null;
+			this.Cpf.DefaultCellStyle = dataGridViewCellStyle21;
 			this.Cpf.FillWeight = 80F;
 			this.Cpf.HeaderText = "CPF";
 			this.Cpf.Name = "Cpf";
@@ -428,8 +430,8 @@
 			// Cep
 			// 
 			this.Cep.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			dataGridViewCellStyle2.Format = "00 000-999";
-			this.Cep.DefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle22.Format = "00 000-999";
+			this.Cep.DefaultCellStyle = dataGridViewCellStyle22;
 			this.Cep.FillWeight = 60F;
 			this.Cep.HeaderText = "CEP";
 			this.Cep.Name = "Cep";
@@ -438,9 +440,9 @@
 			// Fone
 			// 
 			this.Fone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			dataGridViewCellStyle3.Format = "(##) ####-####";
-			dataGridViewCellStyle3.NullValue = null;
-			this.Fone.DefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle23.Format = "(##) ####-####";
+			dataGridViewCellStyle23.NullValue = null;
+			this.Fone.DefaultCellStyle = dataGridViewCellStyle23;
 			this.Fone.FillWeight = 70F;
 			this.Fone.HeaderText = "Telefone";
 			this.Fone.Name = "Fone";

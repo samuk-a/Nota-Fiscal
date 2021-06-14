@@ -7,7 +7,7 @@ using System.Data;
 namespace Notinha.Model {
 	public class Cliente {
 		public uint Id { get; set; }
-		public string Cpf { get; set; }
+		public string Doc { get; set; }
 		public string Nome { get; set; }
 		public string RazSoc { get; set; }
 		public string Endereco { get; set; }
@@ -22,13 +22,13 @@ namespace Notinha.Model {
 		{
 			Id = id;
 		}
-		public Cliente(string cpf)
+		public Cliente(string doc)
 		{
-			Cpf = cpf;
+			Doc = doc;
 		}
-		public Cliente(string cpf, string nome, string razSoc, string end, string bairro, string cidade, string cep, string fone, bool isNew = true)
+		public Cliente(string doc, string nome, string razSoc, string end, string bairro, string cidade, string cep, string fone, bool isNew = true)
 		{
-			Cpf = cpf;
+			Doc = doc;
 			Nome = nome;
 			RazSoc = razSoc;
 			Endereco = end;
@@ -45,7 +45,7 @@ namespace Notinha.Model {
 				Id = reader.GetUInt32(0),
 				Nome = reader.GetString(2)
 			};
-			if (!reader.IsDBNull(1)) cliente.Cpf = reader.GetString(1);
+			if (!reader.IsDBNull(1)) cliente.Doc = reader.GetString(1);
 			if (!reader.IsDBNull(3)) cliente.RazSoc = reader.GetString(3);
 			if (!reader.IsDBNull(4)) cliente.Endereco = reader.GetString(4);
 			if (!reader.IsDBNull(5)) cliente.Bairro = reader.GetString(5);
@@ -126,12 +126,12 @@ namespace Notinha.Model {
 			MySqlCommand cmd = conn.CreateCommand();
 			try {
 				if (IsNew)
-					cmd.CommandText = "INSERT INTO tb_clientes VALUES (NULL, @cpf, @nome, @razao, @end, @bairro, @cidade, @cep, @fone)";
+					cmd.CommandText = "INSERT INTO tb_clientes VALUES (NULL, @doc, @nome, @razao, @end, @bairro, @cidade, @cep, @fone)";
 				else
-					cmd.CommandText = "UPDATE tb_clientes SET cpf=@cpf, nome=@nome, raz_soc=@razao, endereco=@end, bairro=@bairro, cidade=@cidade, cep=@cep, fone=@fone WHERE id = @id";
+					cmd.CommandText = "UPDATE tb_clientes SET doc=@doc, nome=@nome, raz_soc=@razao, endereco=@end, bairro=@bairro, cidade=@cidade, cep=@cep, fone=@fone WHERE id = @id";
 				Console.WriteLine(IsNew.ToString());
 				Console.WriteLine(cmd.CommandText);
-				cmd.Parameters.AddWithValue("@cpf", string.IsNullOrWhiteSpace(Cpf) ? null : Cpf);
+				cmd.Parameters.AddWithValue("@doc", string.IsNullOrWhiteSpace(Doc) ? null : Doc.Replace(".", "").Replace("/", "").Replace("-", ""));
 				cmd.Parameters.AddWithValue("@nome", Nome);
 				cmd.Parameters.AddWithValue("@razao", string.IsNullOrWhiteSpace(RazSoc) ? null : RazSoc);
 				cmd.Parameters.AddWithValue("@end", string.IsNullOrWhiteSpace(Endereco) ? null : Endereco);
