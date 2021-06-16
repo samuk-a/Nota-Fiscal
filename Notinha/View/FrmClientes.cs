@@ -132,7 +132,6 @@ namespace Notinha.View {
 			{
 				txtCpf.Mask = "000,000,000-00";
 			}
-			Console.WriteLine(txtCpf.Text.Length);
 			isExceeded = txtCpf.Text.Length > 12;
 		}
 

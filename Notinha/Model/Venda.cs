@@ -11,18 +11,16 @@ namespace Notinha.Model {
 	}
 	public class Venda {
 		public uint Cod { get; set; }
-		public decimal Frete { get; set; }
 		public decimal Desconto { get; set; }
 		public Cliente Cliente { get; set; }
 		public User User { get; set; }
 		public Type Tipo { get; set; }
 		public DateTime DataVenda { get; set; }
 		public DateTime DataOrcamento { get; set; }
-		public DateTime DataFaturamento { get; set; }
-		public DateTime DataEntrega { get; set; }
 		public Dictionary<Item, uint> Itens { get; set; }
 		public decimal Total { get; set; }
 		public bool IsNew { get; set; }
+		public uint Parcelas { get; set; }
 
 		public Venda() { Itens = new Dictionary<Item, uint>(); }
 		public Venda(uint cod)
@@ -30,18 +28,19 @@ namespace Notinha.Model {
 			Cod = cod;
 			Itens = new Dictionary<Item, uint>();
 		}
-		public Venda(uint cod, decimal frete, decimal desconto, Cliente cli, Type tipo, DateTime venda, DateTime orcamento, DateTime faturamento, DateTime entrega, bool isNew = true)
+		public Venda(uint cod, decimal desconto, Cliente cli, Type tipo, DateTime venda, DateTime orcamento, uint parcelas = 1, bool isNew = true)
 		{
 			Cod = cod;
-			Frete = frete;
 			Desconto = desconto;
 			Cliente = cli;
 			Tipo = tipo;
 			DataVenda = venda;
 			DataOrcamento = orcamento;
-			DataFaturamento = faturamento;
-			DataEntrega = entrega;
 			IsNew = isNew;
+			if (tipo == Type.Vista)
+				Parcelas = 1;
+			else
+				Parcelas = parcelas;
 			Itens = new Dictionary<Item, uint>();
 		}
 
@@ -50,16 +49,14 @@ namespace Notinha.Model {
 			Venda venda = new Venda(
 				reader.GetUInt32(0),
 				reader.GetDecimal(1),
-				reader.GetDecimal(2),
-				new Cliente(reader.GetUInt32(3)),
-				(Type)reader.GetInt32(5),
+				new Cliente(reader.GetUInt32(2)),
+				(Type)reader.GetInt32(4),
 				reader.GetDateTime(7),
 				reader.GetDateTime(8),
-				reader.GetDateTime(9),
-				reader.GetDateTime(10)
+				reader.GetUInt32(6)
 			) {
-				User = new User().GetUser(reader.GetUInt32(4)),
-				Total = reader.GetDecimal(6)
+				User = new User().GetUser(reader.GetUInt32(3)),
+				Total = reader.GetDecimal(5)
 			};
 			return venda;
 		}
@@ -133,33 +130,38 @@ namespace Notinha.Model {
 			int rows = 0;
 			MySqlConnection conn = Connection.GetInstance().GetConnection();
 			MySqlCommand cmd = conn.CreateCommand();
-			try {
+			MySqlTransaction transaction = conn.BeginTransaction();
+			cmd.Transaction = transaction;
+			cmd.Connection = conn;
+
+			try
+			{
+				if (!IsNew)
+					DeleteItens();
+				rows = InsertItens();
 				if (IsNew)
-					cmd.CommandText = "INSERT INTO tb_vendas VALUES (@cod, @frete, @desc, @cliente, @vendido_por, @tipo, @total, @vendido, @orcamento, @faturamento, @entrega)";
+					cmd.CommandText = "INSERT INTO tb_vendas VALUES (@cod, @desc, @cliente, @vendido_por, @tipo, @total, @parcelas, @vendido, @orcamento)";
 				else
-					cmd.CommandText = "UPDATE tb_vendas SET frete=@frete, desconto=@desc, cliente=@cliente, vendido_por=@vendido_por, tipo=@tipo, total=@total, data_venda=@vendido, data_orcamento=@orcamento, data_faturamento=@faturamento, data_entrega=@entrega WHERE cod = @cod";
+					cmd.CommandText = "UPDATE tb_vendas SET desconto=@desc, cliente=@cliente, vendido_por=@vendido_por, tipo=@tipo, total=@total, parcelas=@parcelas, data_venda=@vendido, data_orcamento=@orcamento WHERE cod = @cod";
 				cmd.Parameters.AddWithValue("@cod", Cod);
-				cmd.Parameters.AddWithValue("@frete", Frete);
 				cmd.Parameters.AddWithValue("@desc", Desconto);
 				cmd.Parameters.AddWithValue("@cliente", Cliente.Id);
 				cmd.Parameters.AddWithValue("@vendido_por", User.Id);
 				cmd.Parameters.AddWithValue("@tipo", Tipo);
 				cmd.Parameters.AddWithValue("@total", Total);
+				cmd.Parameters.AddWithValue("@parcelas", Parcelas);
 				cmd.Parameters.AddWithValue("@vendido", DataVenda.ToString("yyyy-MM-dd H:mm:ss"));
 				cmd.Parameters.AddWithValue("@orcamento", DataOrcamento.ToString("yyyy-MM-dd"));
-				cmd.Parameters.AddWithValue("@faturamento", DataFaturamento.ToString("yyyy-MM-dd"));
-				cmd.Parameters.AddWithValue("@entrega", DataEntrega.ToString("yyyy-MM-dd"));
 				rows = cmd.ExecuteNonQuery();
+				transaction.Commit();
 			} catch (Exception erro) {
 				Messages.ShowError("Erro: " + erro.Message);
 				rows = -1;
+				transaction.Rollback();
 			} finally {
 				if (conn.State == ConnectionState.Open)
 					conn.Close();
 			}
-			if (!IsNew)
-				DeleteItens();
-			rows = InsertItens();
 			return rows;
 		}
 

@@ -141,6 +141,16 @@ namespace Notinha.Model {
 				cmd.Parameters.AddWithValue("@fone", string.IsNullOrWhiteSpace(Fone) ? null : Fone);
 				if (!IsNew) cmd.Parameters.AddWithValue("@id", id == 0 ? Id : id);
 				rows = cmd.ExecuteNonQuery();
+				if (IsNew)
+				{
+					cmd = conn.CreateCommand();
+					cmd.CommandText = "SELECT LAST_INSERT_ID();";
+					MySqlDataReader reader = cmd.ExecuteReader();
+					if (reader.Read())
+						Id = reader.GetUInt32(0);
+					else
+						throw new Exception("Error getting client");
+				}
 			} catch (Exception erro) {
 				Messages.ShowError("Erro: " + erro.Message);
 				rows = -1;

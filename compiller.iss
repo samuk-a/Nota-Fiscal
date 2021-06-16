@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "AE Canassa"
-#define MyAppVersion "1.6"
+#define MyAppVersion "1.7"
 #define MyAppPublisher "Samuel"
 #define MyAppURL "https://aecanassa.com.br"
 #define MyAppExeName "Auto Elétrica Canassa.exe"
@@ -10,7 +10,7 @@
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{2A537237-2E55-4E8E-BAC5-006B723D0664}
+AppId={{53419B25-5155-48AC-8E26-8CE04AC112C8}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -19,13 +19,14 @@ AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
 AppUpdatesURL={#MyAppURL}
 DefaultDirName={autopf}\{#MyAppName}
-DisableProgramGroupPage=yes
+DefaultGroupName={#MyAppName}
+AllowNoIcons=yes
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
 OutputDir=C:\Users\Samuel\Documents
-OutputBaseFilename=Setup-v16
-SetupIconFile=C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\Resources\eletrica_opps.ico
+OutputBaseFilename=Setup-v17
+SetupIconFile=C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\eletrica_opps.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -80,6 +81,8 @@ Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\K4os.Hash.xxH
 Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\K4os.Hash.xxHash.xml"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\MySql.Data.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\MySql.Data.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\MySqlConnector.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\MySqlConnector.xml"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Renci.SshNet.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Renci.SshNet.xml"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\System.Buffers.dll"; DestDir: "{app}"; Flags: ignoreversion
@@ -95,7 +98,7 @@ Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Zstandard.Net
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
-Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
+Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]

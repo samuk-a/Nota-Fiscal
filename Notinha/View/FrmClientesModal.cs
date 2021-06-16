@@ -9,6 +9,7 @@ namespace Notinha.View {
 		private Color buttonColor = Color.Tomato;
 		private Color hoverButtonColor = Color.OrangeRed;
 		private bool mouseDown;
+		private bool isExceeded = false;
 		private Point lastLocation;
 		private FrmVendas frmVendas;
 		public FrmClientesModal(FrmVendas vendas)
@@ -30,6 +31,7 @@ namespace Notinha.View {
 			Cliente cliente = new Cliente(txtCpf.Text, txtNome.Text, txtRazao.Text, txtEndereco.Text, txtBairro.Text, txtCidade.Text, txtCep.Text, txtFone.Text);
 			if (cliente.Save() > 0) {
 				Messages.ShowSuccess("Salvo com sucesso!");
+				frmVendas.txtClientId.Text = cliente.Id.ToString();
 				frmVendas.txtClient.Text = txtNome.Text;
 				Close();
 			}
@@ -69,6 +71,26 @@ namespace Notinha.View {
 		private void BtnClose_Click(object sender, EventArgs e)
 		{
 			Close();
+		}
+
+		private void txtCpf_TextChanged(object sender, EventArgs e)
+		{
+			if (!isExceeded)
+			{
+				txtCpf.Mask = "000,000,000-00";
+			}
+			isExceeded = txtCpf.Text.Length > 12;
+		}
+
+		private void txtCpf_KeyPress(object sender, KeyPressEventArgs e)
+		{
+			if (isExceeded)
+			{
+				int offset = txtCpf.Text.Length > 12 ? 4 : 3;
+				txtCpf.Mask = "00,000,000/0000-00";
+				txtCpf.Select(txtCpf.Text.Length + offset, 0);
+			}
+			isExceeded = txtCpf.Text.Length > 10;
 		}
 	}
 }

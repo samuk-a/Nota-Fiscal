@@ -60,15 +60,21 @@ namespace Notinha.View {
 		private void GetDetails(Venda venda)
 		{
 			txtCod.Text = venda.Cod.ToString();
-			numFrete.Value = venda.Frete;
 			numDesconto.Text = venda.Desconto.ToString();
 			dtpHora.Value = dtpVendido.Value = venda.DataVenda;
 			dtpOrcamento.Value = venda.DataOrcamento;
-			dtpFaturamento.Value = venda.DataFaturamento;
-			dtpEntregue.Value = venda.DataEntrega;
 			venda.Cliente = venda.Cliente.GetCliente();
 			txtClient.Text = venda.Cliente.Nome;
 			txtClientId.Text = venda.Cliente.Id.ToString();
+			if (venda.Tipo == Model.Type.Parcelado)
+			{
+				parcelado.Checked = true;
+				numParcelas.Value = venda.Parcelas;
+			}
+			else
+			{
+				vista.Checked = true;
+			}
 			Populate(venda.Itens);
 		}
 
@@ -87,16 +93,14 @@ namespace Notinha.View {
 			btnNovoCliente.Visible = btnNovoCliente.Enabled = false;
 			btnBuscarCliente.Visible = btnBuscarCliente.Enabled = false;
 			btnDelete.Visible = btnDelete.Enabled = false;
-			numFrete.Enabled = false;
 			numDesconto.Enabled = false;
 			txtClient.Enabled = false;
 			vista.Enabled = false;
 			parcelado.Enabled = false;
-			dtpEntregue.Enabled = false;
 			dtpOrcamento.Enabled = false;
 			dtpHora.Enabled = false;
-			dtpFaturamento.Enabled = false;
 			dtpVendido.Enabled = false;
+			groupParcelas.Visible = numParcelas.Enabled = false;
 			if (!all) btnAdd.Enabled = true;
 			else btnAdd.Enabled = false;
 		}
@@ -109,15 +113,12 @@ namespace Notinha.View {
 			btnBuscarCliente.Visible = btnBuscarCliente.Enabled = true;
 			if (User.instance.Admin)
 				btnDelete.Visible = btnDelete.Enabled = all;
-			numFrete.Enabled = true;
 			numDesconto.Enabled = true;
 			txtClient.Enabled = true;
 			vista.Enabled = true;
 			parcelado.Enabled = true;
-			dtpEntregue.Enabled = true;
 			dtpOrcamento.Enabled = true;
 			dtpHora.Enabled = true;
-			dtpFaturamento.Enabled = true;
 			dtpVendido.Enabled = true;
 			if (all) btnAdd.Enabled = true;
 			else btnAdd.Enabled = false;
@@ -143,12 +144,9 @@ namespace Notinha.View {
 			txtCod.ResetText();
 			txtClient.ResetText();
 			txtClientId.ResetText();
-			numFrete.Value = 0;
 			numDesconto.ResetText();
-			dtpEntregue.ResetText();
 			dtpOrcamento.ResetText();
 			dtpHora.ResetText();
-			dtpFaturamento.ResetText();
 			dtpVendido.ResetText();
 			produtosTable.Rows.Clear();
 		}
@@ -164,17 +162,15 @@ namespace Notinha.View {
 			DateTime date = Convert.ToDateTime(dt);
 			Venda venda = new Venda(
 				Convert.ToUInt32(txtCod.Text),
-				numFrete.Value,
 				numDesconto.Value,
 				new Cliente().GetCliente(Convert.ToUInt32(txtClientId.Text)),
 				type,
 				date,
 				dtpOrcamento.Value,
-				dtpFaturamento.Value,
-				dtpEntregue.Value,
+				(uint)numParcelas.Value,
 				isNew) {
 				User = User.instance,
-				Total = numFrete.Value - numDesconto.Value
+				Total = -numDesconto.Value
 			};
 			foreach (DataGridViewRow row in produtosTable.Rows) {
 				Item item = new Item().GetItem(row.Cells[0].Value.ToString());
@@ -200,7 +196,7 @@ namespace Notinha.View {
 		{
 			vendasTable.Rows.Clear();
 			foreach (Venda venda in vendas)
-				vendasTable.Rows.Add(venda.Cod, venda.Frete, venda.Desconto, venda.DataVenda, venda.DataOrcamento.ToShortDateString(), venda.DataFaturamento.ToShortDateString(), venda.DataEntrega.ToShortDateString(), venda.Total);
+				vendasTable.Rows.Add(venda.Cod, venda.Desconto, venda.DataVenda, venda.DataOrcamento.ToShortDateString(), venda.Total, venda.Parcelas, venda.Cliente.Id);
 		}
 
 		private void Populate(Dictionary<Item, uint> itens)
@@ -260,6 +256,16 @@ namespace Notinha.View {
 				int variance = 3;
 				g.DrawRectangle(p, new Rectangle(txt.Location.X - variance, txt.Location.Y - variance, txt.Width + variance, txt.Height + variance));
 			}
+		}
+
+		private void parcelado_CheckedChanged(object sender, EventArgs e)
+		{
+			groupParcelas.Visible = numParcelas.Enabled = true;
+		}
+
+		private void vista_CheckedChanged(object sender, EventArgs e)
+		{
+			groupParcelas.Visible = numParcelas.Enabled = false;
 		}
 	}
 }

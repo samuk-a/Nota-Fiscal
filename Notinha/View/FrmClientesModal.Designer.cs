@@ -203,6 +203,8 @@
 			this.txtCpf.Size = new System.Drawing.Size(237, 23);
 			this.txtCpf.TabIndex = 1;
 			this.txtCpf.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+			this.txtCpf.TextChanged += new System.EventHandler(this.txtCpf_TextChanged);
+			this.txtCpf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCpf_KeyPress);
 			// 
 			// btnSave
 			// 
@@ -263,9 +265,9 @@
 			this.lbCod.AutoSize = true;
 			this.lbCod.Location = new System.Drawing.Point(7, 39);
 			this.lbCod.Name = "lbCod";
-			this.lbCod.Size = new System.Drawing.Size(37, 17);
+			this.lbCod.Size = new System.Drawing.Size(78, 17);
 			this.lbCod.TabIndex = 23;
-			this.lbCod.Text = "CPF:";
+			this.lbCod.Text = "CPF/CNPJ:";
 			// 
 			// pnTop
 			// 

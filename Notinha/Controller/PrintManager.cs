@@ -102,16 +102,26 @@ namespace Notinha.Controller {
 			// Row 2
 			Paragraph razSoc = new Paragraph("Raz Soc.:");
 			Paragraph razSocV = new Paragraph(venda.Cliente.RazSoc ?? "").SetBold();
-			Paragraph cpf = new Paragraph("CNPJ/CPF:").SetTextAlignment(TextAlignment.RIGHT);
-			ulong cpfLong = Convert.ToUInt64(venda.Cliente.Doc);
-			Paragraph cpfV;
-			if (cpfLong == 0)
+			Paragraph doc = new Paragraph();
+			ulong docLong = Convert.ToUInt64(venda.Cliente.Doc);
+			Paragraph docV;
+			if (docLong == 0)
 			{
-				cpfV = new Paragraph();
+				docV = new Paragraph();
 			}
 			else
 			{
-				cpfV = new Paragraph(cpfLong.ToString(@"000\.000\.000\-00"));
+
+				if (venda.Cliente.Doc.Length == 11)
+				{
+					doc = new Paragraph("CPF:").SetTextAlignment(TextAlignment.RIGHT);
+					docV = new Paragraph(docLong.ToString(@"000\.000\.000\-00"));
+				}
+				else
+				{
+					doc = new Paragraph("CNPJ:").SetTextAlignment(TextAlignment.RIGHT);
+					docV = new Paragraph(docLong.ToString(@"00\.000\.000\/0000\-00"));
+				}
 			}
 			
 			Paragraph fone = new Paragraph("Fone:").SetTextAlignment(TextAlignment.RIGHT);
@@ -134,7 +144,7 @@ namespace Notinha.Controller {
 			Paragraph tipoVendaV = new Paragraph(venda.Tipo.ToString()).SetBold();
 
 			GenerateRow(font, ref theader, border, nome, nomeV, null, null, cod, codV);
-			GenerateRow(font, ref theader, border, razSoc, razSocV, cpf, cpfV, fone, foneV);
+			GenerateRow(font, ref theader, border, razSoc, razSocV, doc, docV, fone, foneV);
 			GenerateRow(font, ref theader, border, end, endV, cidade, cidadeV, cep, cepV);
 			GenerateRow(font, ref theader, border, bairro, bairroV, tipoVenda, tipoVendaV, null, null);
 
@@ -174,17 +184,14 @@ namespace Notinha.Controller {
 		{
 			Table table = new Table(UnitValue.CreatePercentArray(cells)).UseAllAvailableWidth();
 			Paragraph sub = new Paragraph("SUB TOTAL:").SetTextAlignment(TextAlignment.RIGHT);
-			Paragraph frete = new Paragraph("VALOR FRETE:").SetTextAlignment(TextAlignment.RIGHT);
 			Paragraph desconto = new Paragraph("DESCONTO:").SetTextAlignment(TextAlignment.RIGHT);
 			Paragraph total = new Paragraph("TOTAL:").SetTextAlignment(TextAlignment.RIGHT).SetBold();
-			decimal totalF = venda.Total + venda.Desconto - venda.Frete;
+			decimal totalF = venda.Total + venda.Desconto;
 			Paragraph subV = new Paragraph(totalF.ToString()).SetTextAlignment(TextAlignment.RIGHT);
-			Paragraph freteV = new Paragraph(venda.Frete.ToString()).SetTextAlignment(TextAlignment.RIGHT);
 			Paragraph descV = new Paragraph("-" + venda.Desconto).SetTextAlignment(TextAlignment.RIGHT);
 			Paragraph totalV = new Paragraph(venda.Total.ToString()).SetTextAlignment(TextAlignment.RIGHT);
 
 			GenerateRow(font, ref table, border, sub, subV);
-			GenerateRow(font, ref table, border, frete, freteV);
 			GenerateRow(font, ref table, border, desconto, descV);
 			GenerateRow(font, ref table, border, total, totalV);
 			return table;
@@ -195,17 +202,11 @@ namespace Notinha.Controller {
 			Table table = new Table(UnitValue.CreatePercentArray(cells)).UseAllAvailableWidth();
 			Paragraph data = new Paragraph("Data:").SetTextAlignment(TextAlignment.RIGHT);
 			Paragraph orcamento = new Paragraph("Data Orçamento:").SetTextAlignment(TextAlignment.RIGHT);
-			Paragraph faturamento = new Paragraph("Data Faturamento:").SetTextAlignment(TextAlignment.RIGHT);
-			Paragraph entrega = new Paragraph("Data Entrega:").SetTextAlignment(TextAlignment.RIGHT);
 			Paragraph dataV = new Paragraph(venda.DataVenda.ToString()).SetTextAlignment(TextAlignment.RIGHT);
 			Paragraph orcamentoV = new Paragraph(venda.DataOrcamento.ToShortDateString()).SetTextAlignment(TextAlignment.RIGHT);
-			Paragraph faturamentoV = new Paragraph(venda.DataFaturamento.ToShortDateString()).SetTextAlignment(TextAlignment.RIGHT);
-			Paragraph entregaV = new Paragraph(venda.DataEntrega.ToShortDateString()).SetTextAlignment(TextAlignment.RIGHT);
 
 			GenerateRow(font, ref table, border, data, dataV);
 			GenerateRow(font, ref table, border, orcamento, orcamentoV);
-			GenerateRow(font, ref table, border, faturamento, faturamentoV);
-			GenerateRow(font, ref table, border, entrega, entregaV);
 			return table;
 		}
 	}
