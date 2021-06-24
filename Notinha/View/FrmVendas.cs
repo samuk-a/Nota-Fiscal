@@ -178,7 +178,8 @@ namespace Notinha.View {
 				venda.Itens.Add(item, qtd);
 				venda.Total += item.Valor * qtd;
 			}
-			if (venda.Save() > 0) {
+			int save = venda.Save();
+			if (save > 0) {
 				Messages.ShowSuccess("Salvo com sucesso!");
 				Populate(venda.Load());
 			}

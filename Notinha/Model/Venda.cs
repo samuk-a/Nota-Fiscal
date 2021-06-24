@@ -130,15 +130,8 @@ namespace Notinha.Model {
 			int rows = 0;
 			MySqlConnection conn = Connection.GetInstance().GetConnection();
 			MySqlCommand cmd = conn.CreateCommand();
-			MySqlTransaction transaction = conn.BeginTransaction();
-			cmd.Transaction = transaction;
-			cmd.Connection = conn;
-
 			try
 			{
-				if (!IsNew)
-					DeleteItens();
-				rows = InsertItens();
 				if (IsNew)
 					cmd.CommandText = "INSERT INTO tb_vendas VALUES (@cod, @desc, @cliente, @vendido_por, @tipo, @total, @parcelas, @vendido, @orcamento)";
 				else
@@ -153,11 +146,12 @@ namespace Notinha.Model {
 				cmd.Parameters.AddWithValue("@vendido", DataVenda.ToString("yyyy-MM-dd H:mm:ss"));
 				cmd.Parameters.AddWithValue("@orcamento", DataOrcamento.ToString("yyyy-MM-dd"));
 				rows = cmd.ExecuteNonQuery();
-				transaction.Commit();
+				if (!IsNew)
+					DeleteItens();
+				rows = InsertItens();
 			} catch (Exception erro) {
 				Messages.ShowError("Erro: " + erro.Message);
 				rows = -1;
-				transaction.Rollback();
 			} finally {
 				if (conn.State == ConnectionState.Open)
 					conn.Close();
@@ -190,6 +184,7 @@ namespace Notinha.Model {
 			MySqlConnection conn = Connection.GetInstance().GetConnection();
 			MySqlCommand cmd = conn.CreateCommand();
 			try {
+				Messages.ShowSuccess(Cod.ToString());
 				cmd.CommandText = "DELETE FROM tb_itens_venda WHERE cod_venda = @cod";
 				cmd.Parameters.AddWithValue("@cod", Cod);
 				rows = cmd.ExecuteNonQuery();
