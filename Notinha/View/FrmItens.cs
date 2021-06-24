@@ -27,6 +27,7 @@ namespace Notinha.View {
 			Item item = new Item(cells[0].Value.ToString(), cells[1].Value.ToString(), cells[2].Value.ToString(), Convert.ToDecimal(cells[3].Value));
 			txtOldCod.Text = item.Cod;
 			GetDetails(item);
+			isNew = false;
 			EnableButtons(true);
 		}
 
@@ -90,7 +91,7 @@ namespace Notinha.View {
 		private void BtnSave_Click(object sender, EventArgs e)
 		{
 			Item item = new Item(txtCod.Text, txtDesc.Text, txtUn.Text, numValor.Value, isNew);
-			if (item.Save() > 0) {
+			if (item.Save(txtOldCod.Text) > 0) {
 				Messages.ShowSuccess("Salvo com sucesso!");
 				Populate(item.Load());
 			}
@@ -101,8 +102,12 @@ namespace Notinha.View {
 		{
 			Item item = new Item(txtOldCod.Text);
 			if (Messages.ShowQuestion("Deseja deletar mesmo?") == DialogResult.Yes)
+			{
 				if (item.Delete() > 0) Messages.ShowSuccess("Deletado com sucesso!");
 				else Messages.ShowError("Erro ao deletar!\nTente novamente.");
+				ResetForm();
+				Populate(item.Load());
+			}
 		}
 
 		private void Populate(List<Item> itens)
