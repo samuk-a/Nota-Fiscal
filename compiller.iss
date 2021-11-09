@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "AE Canassa"
-#define MyAppVersion "1.9"
+#define MyAppVersion "1.10"
 #define MyAppPublisher "Samuel"
 #define MyAppURL "https://aecanassa.com.br"
 #define MyAppExeName "Auto Elétrica Canassa.exe"
@@ -24,9 +24,9 @@ AllowNoIcons=yes
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
-OutputDir=C:\Users\Samuel\Documents
-OutputBaseFilename=Setup-v19
-SetupIconFile=C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\eletrica_opps.ico
+OutputDir=A:\Samuel\Documents
+OutputBaseFilename=Setup-v110
+SetupIconFile=A:\Samuel\Documents\Nota-Fiscal\Notinha\eletrica_opps.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -38,63 +38,63 @@ Name: "brazilianportuguese"; MessagesFile: "compiler:Languages\BrazilianPortugue
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Auto Elétrica Canassa.exe.config"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Auto Elétrica Canassa.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\BouncyCastle.Crypto.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\BouncyCastle.Crypto.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Common.Logging.Core.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Common.Logging.Core.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Common.Logging.Core.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Common.Logging.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Common.Logging.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Common.Logging.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\CryptSharp.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\CryptSharp.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\CryptSharp.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Google.Protobuf.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Google.Protobuf.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Google.Protobuf.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.barcodes.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.barcodes.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.forms.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.forms.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.io.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.io.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.kernel.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.kernel.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.layout.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.layout.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.pdfa.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.pdfa.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.sign.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.sign.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.styledxmlparser.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.styledxmlparser.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.svg.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.svg.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\K4os.Compression.LZ4.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\K4os.Compression.LZ4.Streams.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\K4os.Compression.LZ4.Streams.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\K4os.Compression.LZ4.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\K4os.Hash.xxHash.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\K4os.Hash.xxHash.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\MySql.Data.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\MySql.Data.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\MySqlConnector.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\MySqlConnector.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Renci.SshNet.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Renci.SshNet.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\System.Buffers.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\System.Buffers.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\System.Memory.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\System.Memory.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\System.Runtime.CompilerServices.Unsafe.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\System.Runtime.CompilerServices.Unsafe.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\System.Threading.Tasks.Extensions.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\System.Threading.Tasks.Extensions.xml"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Ubiety.Dns.Core.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Zstandard.Net.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Auto Elétrica Canassa.exe.config"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Auto Elétrica Canassa.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\BouncyCastle.Crypto.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\BouncyCastle.Crypto.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Common.Logging.Core.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Common.Logging.Core.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Common.Logging.Core.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Common.Logging.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Common.Logging.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Common.Logging.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\CryptSharp.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\CryptSharp.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\CryptSharp.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Google.Protobuf.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Google.Protobuf.pdb"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Google.Protobuf.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.barcodes.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.barcodes.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.forms.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.forms.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.io.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.io.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.kernel.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.kernel.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.layout.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.layout.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.pdfa.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.pdfa.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.sign.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.sign.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.styledxmlparser.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.styledxmlparser.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.svg.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\itext.svg.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\K4os.Compression.LZ4.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\K4os.Compression.LZ4.Streams.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\K4os.Compression.LZ4.Streams.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\K4os.Compression.LZ4.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\K4os.Hash.xxHash.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\K4os.Hash.xxHash.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\MySql.Data.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\MySql.Data.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\MySqlConnector.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\MySqlConnector.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Renci.SshNet.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Renci.SshNet.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\System.Buffers.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\System.Buffers.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\System.Memory.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\System.Memory.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\System.Runtime.CompilerServices.Unsafe.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\System.Runtime.CompilerServices.Unsafe.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\System.Threading.Tasks.Extensions.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\System.Threading.Tasks.Extensions.xml"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Ubiety.Dns.Core.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "A:\Samuel\Documents\Nota-Fiscal\Notinha\bin\Release\Zstandard.Net.dll"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
